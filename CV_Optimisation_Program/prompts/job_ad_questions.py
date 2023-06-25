@@ -1,5 +1,3 @@
-
-
 class JobAdQuestions:
     def job_ad_questions(response):
         message = [
@@ -10,9 +8,7 @@ class JobAdQuestions:
             {
                 "role": "user",
                 "content": 
-                
                 f""" {response} 
-
                 Based on the job description provided, please analyze the text and identify the most important keywords and skills that are relevant to the position. 
                 Consider the specific technical skills, qualifications, and experience mentioned in the job description. 
                 Additionally, focus on soft skills, such as communication, problem-solving, teamwork, and attention to detail.
@@ -22,14 +18,30 @@ class JobAdQuestions:
                 """
             },
             {
-                "role": "assistant", 
-                "content": "give me these as a list of the keywords and nothing else."
+                "role": "user", 
+                "content": 
+                """
+                Please provide a thorough review of the text and extract the technical requirements with meticulous attention to detail.
+                Identify and add to the list the highly significant technical requirements that are essential for the role
+                """
             },
             {
-                "role": "user", 
-                "content": "give it one more review and pick with more detail the technicaly important requirments and then add them to the list."
+                "role": "assistant", 
+                "content": "Please extract the keywords from the text passage and provide them as a concise list, without including complete sentences or additional context."
             },
 
+        ]
+
+        return message
+    
+    # Profile custom profile message generator.
+
+    def job_ad_questions(response, experences, knowledge, education):
+        message = [
+            {
+                "role": "system", 
+                "content": "Help me analyze this text passage from an ATS perspective."
+            },
         ]
 
         return message
