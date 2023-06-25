@@ -1,4 +1,9 @@
+from prompts.my_inputs import (edu_prodile, work_ex_profile, core_programing_profile)
+
 class JobAdQuestions:
+
+    # Job ad keyword analyzer message.
+
     def job_ad_questions(response):
         message = [
             {
@@ -34,13 +39,87 @@ class JobAdQuestions:
 
         return message
     
-    # Profile custom profile message generator.
+    # Custom profile message generator.
 
-    def job_ad_questions(response, experences, knowledge, education):
+    def job_ad_profile_gen(response):
         message = [
             {
                 "role": "system", 
-                "content": "Help me analyze this text passage from an ATS perspective."
+                "content": "Help me write a professional CV profile statement."
+            },
+            {
+                "role": "user",
+                "content": 
+                f""" the job requirement: {response} 
+                """
+            },
+            {
+                "role": "user",
+                "content": 
+                f""" my skills education background: {edu_prodile} 
+                """
+            },
+            {
+                "role": "user",
+                "content": 
+                f""" my skills from work experence background: {work_ex_profile} 
+                """
+            },
+            {
+                "role": "user",
+                "content": 
+                f""" my core software development skills background: {core_programing_profile} 
+                """
+            },
+            {
+                "role": "assistant", 
+                "content": "match the job requirements to my education, work experence and software development skills. do not lie about anything i have not got experience with."
+            },
+            {
+                "role": "user", 
+                "content": "match my eductional background, work experice and core software development skil to the job adverts keyword."
+            },
+            {
+                "role": "user", 
+                "content": "make the statement only 100 words long and include the most important keywords from the job ad analysis."
+            },
+            {
+                "role": "user", 
+                "content": "remove any mention keywords that are not included in my education, core skills, or work experience from the statement."
+            },
+        ]
+
+        return message
+    
+    def job_ad_makers_gen(response):
+        message = [
+            {
+                "role": "system", 
+                "content": "Help write an overview statement."
+            },
+            {
+                "role": "user",
+                "content": 
+                f""" the job requirements: {response} 
+                """
+            },
+            {
+                "role": "user",
+                "content": 
+                f""" my core software development skills background: {core_programing_profile} 
+                """
+            },
+            {
+                "role": "assistant", 
+                "content": "write a brief statement about the makers software development bootcamp."
+            },
+            {
+                "role": "user", 
+                "content": "match the statement to my core software development skills background and job requirements"
+            },
+            {
+                "role": "assistant", 
+                "content": "40 words max"
             },
         ]
 
