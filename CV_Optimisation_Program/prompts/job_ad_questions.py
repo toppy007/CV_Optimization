@@ -1,4 +1,4 @@
-from prompts.my_inputs import (edu_prodile, work_ex_profile, core_programing_profile)
+from prompts.my_inputs import (edu_prodile, work_ex_profile, core_programing_profile, projects_profile)
 
 class JobAdQuestions:
 
@@ -86,6 +86,46 @@ class JobAdQuestions:
             {
                 "role": "user", 
                 "content": "remove any mention keywords that are not included in my education, core skills, or work experience from the statement."
+            },
+        ]
+
+        return message
+    
+    def job_ad_covering_letter_gen(response, job_ad):
+        message = [
+            {
+                "role": "system", 
+                "content": """You are a talented professional applying for a job. Write a professional covering letter tailored to the job requirements, highlighting your software development skills. Include specific examples from your completed projects to showcase your expertise. The letter should be well-structured, concise, and demonstrate your enthusiasm for the role."""
+            },
+            {
+                "role": "assistant",
+                "content": 
+                f""" job add: {job_ad} 
+                """
+            },
+            {
+                "role": "assistant",
+                "content": 
+                f""" keywords job requirements: {response} 
+                """
+            },
+            {
+                "role": "user",
+                "content": 
+                f"""{core_programing_profile} 
+                """
+            },
+            {
+                "role": "user",
+                "content": 
+                f"""{edu_prodile} 
+                """
+            },
+            {
+                "role": "user",
+                "content": 
+                f"""{projects_profile} 
+                """
             },
         ]
 
