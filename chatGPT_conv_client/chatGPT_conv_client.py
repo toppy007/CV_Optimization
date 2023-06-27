@@ -10,12 +10,12 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 class ChatGPTConvClient:
     def gpt_ad_keyword_finder(message):
 
-        model='gpt-3.5-turbo'
+        model='gpt-3.5-turbo-16k'
 
         response = openai.ChatCompletion.create(
             model=model, 
             messages=message, 
-            temperature=0.8, 
+            temperature=0.3, 
             top_p=1, 
             frequency_penalty=0, 
             presence_penalty=0
@@ -23,10 +23,5 @@ class ChatGPTConvClient:
 
         return response.choices[0].message['content']
     
-    def chatGPT_append_builder(original_text, text_to_append):
-        return None
-    
-    def chatGPT_save_local():
-        return None
 
         
