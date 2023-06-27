@@ -10,7 +10,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 class ChatGPTConvClient:
     def gpt_ad_keyword_finder(message):
 
-        model='gpt-3.5-turbo'
+        model='gpt-3.5-turbo-16k'
 
         response = openai.ChatCompletion.create(
             model=model, 
