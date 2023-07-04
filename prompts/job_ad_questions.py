@@ -39,6 +39,31 @@ class JobAdQuestions:
 
         return message
     
+    # Job ad keyword matching to my skills.
+
+    def job_ad_matcher(response):
+        message = [
+            {
+                "role": "system", 
+                "content": "Help me find matching phrases and words."
+            },
+            {
+                "role": "user",
+                "content": f"These are the job keywords {response}."
+            },
+            {
+                "role": "user",
+                "content": f"this is a list of my skills {core_programing_profile}."
+            },
+            {
+                "role": "user", 
+                "content": "compare the list of job keywords and my skill and print the matching results found in both."
+            },
+
+        ]
+
+        return message
+    
     # Custom profile message generator.
 
     def job_ad_profile_gen(response):
